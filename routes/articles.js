@@ -7,13 +7,6 @@ router.get("/api/v1/getarticles/:topic&:startYear&:endYear", (req,res) => {
     let searchURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" +
     authKey + "&q=" + req.params.topic + "&begin_date=" + req.params.startYear + "0101"
     + "&end_date=" + req.params.endYear + "0101";
-    // let searchURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-    //     searchURL += '?' + $.param({
-    //     'api-key': "a46da05d03e24597961ee5ca16cace61",
-    //     'q': "obama",
-    //     'begin_date': "20110101",
-    //     'end_date': "20120101"
-    //     });
     let articles =[];
     axios({
         method: "get",
