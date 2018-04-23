@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const axios = require("axios")
+const articlesController = require("../controllers/articlesController")
 // const articlesController = require("..controllers/articelsController")
 const authKey = "a46da05d03e24597961ee5ca16cace61"
 
@@ -22,5 +23,13 @@ router.get("/api/v1/getarticles/:topic&:startYear&:endYear", (req,res) => {
    
 })
 
+router.post("/api/v1/newSaved", (req, res) => {
+    console.log("hey")
+    articlesController.newSaved(req, res)
+} )
+
+router.use(function(req, res) {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  });
 
 module.exports = router;
