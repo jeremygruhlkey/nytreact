@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import API from "../utils/API"
 import Input from "./input.js"
-import Article from "./Articles.js"
+import Article from "./Article.js"
 
 class Search extends Component {
     state = {
@@ -12,7 +12,10 @@ class Search extends Component {
     };
 
     handleInputChange = event => {
+        console.log(event.target.placeholder)
         const {name, value} = event.target;
+        console.log(event.target)
+        console.log(value)
         this.setState({
             [name]: value
         });
@@ -28,6 +31,14 @@ class Search extends Component {
             console.log(this.state.articles)})
         .catch(err => console.log(err));
     };
+
+    saveArticle = event => {
+        console.log("save pressed")
+        console.log(this.props.headline)
+        console.log(event.target.headline)
+        const {headline, snippet} = event.target;
+        console.log(headline)
+    }
 
     render(){
         return (
@@ -62,7 +73,14 @@ class Search extends Component {
                     <div className = "panel-body">
                         {this.state.articles.map((article, index) => {
                             return (
-                                <Article key = {index} snippet = {article.snippet}/>
+                                <Article 
+                                    key = {index} 
+                                    date = {article.pub_date}
+                                    headline = {article.headline.main}
+                                    snippet = {article.snippet}
+                                    url = {article.web_url}
+                                    saveArticle = {this.saveArticle}
+                                    />
                             )
                         })}
                     </div>
