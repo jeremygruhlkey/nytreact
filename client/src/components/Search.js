@@ -33,7 +33,6 @@ class Search extends Component {
             this.setState({
                 articles: articleInfo
             })}
-            // console.log(this.state.articles)
         })
         .catch(err => console.log(err));
     };

@@ -9,17 +9,6 @@ class Saved extends Component {
 
     componentWillMount() {
         this.loadSavedArticles()
-        // API.getSavedArticles()
-        // .then(res => {
-        //         this.setState({
-        //             savedArticles: res.data
-        //         })
-        //         console.log(res.data)
-        //         console.log(this.state.savedArticles)
-        //     }
-        // ).catch(err => {
-        //     console.log(err)
-        // })
     }
 
     deleteArticle = article => {
@@ -29,11 +18,8 @@ class Saved extends Component {
             this.loadSavedArticles()
         ).catch(err => console.log(err))
         }
-        // API call to delete article by id
 
     loadSavedArticles = () => {
-        // API call to load saved articles
-        //update state
         API.getSavedArticles()
         .then(res => {
                 this.setState({
