@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const axios = require("axios")
+const path = require("path")
 const articlesController = require("../controllers/articlesController")
 // const articlesController = require("..controllers/articelsController")
 const authKey = "a46da05d03e24597961ee5ca16cace61"

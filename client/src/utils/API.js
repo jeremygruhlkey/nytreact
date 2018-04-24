@@ -13,8 +13,8 @@ export default {
     },
 
     deleteArticle: function(id){
-        console.log("deleting")
-        return axios.post("/api/v1/deleteSaved/" + id)
+        console.log("deleting id " + id)
+        return axios.delete("/api/v1/deleteSaved/" + id)
     },
 
     getSavedArticles: function(){

@@ -8,7 +8,31 @@ class Saved extends Component {
     };
 
     componentWillMount() {
-        // API call to retrieve saved articles
+        this.loadSavedArticles()
+        // API.getSavedArticles()
+        // .then(res => {
+        //         this.setState({
+        //             savedArticles: res.data
+        //         })
+        //         console.log(res.data)
+        //         console.log(this.state.savedArticles)
+        //     }
+        // ).catch(err => {
+        //     console.log(err)
+        // })
+    }
+
+    deleteArticle = article => {
+        console.log("delete pressed")
+        const id = article._id
+        API.deleteArticle(id).then(res =>
+            this.loadSavedArticles()
+        ).catch(err => console.log(err))
+        }
+        // API call to delete article by id
+
+    loadSavedArticles = () => {
+        // API call to load saved articles
         //update state
         API.getSavedArticles()
         .then(res => {
@@ -21,16 +45,6 @@ class Saved extends Component {
         ).catch(err => {
             console.log(err)
         })
-    }
-
-    deleteArticle = id => {
-        console.log("delete pressed")
-        // API call to delete article by id
-    };
-
-    loadSavedArticles = () => {
-        // API call to load saved articles
-        //update state
     }
 
     render() {

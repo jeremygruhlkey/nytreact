@@ -40,9 +40,9 @@ class Search extends Component {
 
     saveArticle = article => {
         console.log("save pressed")
-        console.log(article.headline.main)
+        console.log(article.headline)
         const articleInfo = {
-            headline: article.headline.main,
+            headline: article.headline,
             snippet: article.snippet,
             url: article.web_url
         }
