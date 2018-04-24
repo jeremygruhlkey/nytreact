@@ -32,12 +32,15 @@ class Search extends Component {
         .catch(err => console.log(err));
     };
 
-    saveArticle = event => {
+    saveArticle = article => {
         console.log("save pressed")
-        console.log(this.props.headline)
-        console.log(event.target.headline)
-        const {headline, snippet} = event.target;
-        console.log(headline)
+        console.log(article.headline.main)
+        const articleInfo = {
+            headline: article.headline.main,
+            snippet: article.snippet,
+            url: article.web_url
+        }
+        API.saveArticle(articleInfo)
     }
 
     render(){
@@ -75,11 +78,9 @@ class Search extends Component {
                             return (
                                 <Article 
                                     key = {index} 
-                                    date = {article.pub_date}
-                                    headline = {article.headline.main}
-                                    snippet = {article.snippet}
-                                    url = {article.web_url}
-                                    saveArticle = {this.saveArticle}
+                                    article = {article}
+                                    saveOrDelete = {this.saveArticle}
+                                    save = "Save"
                                     />
                             )
                         })}
