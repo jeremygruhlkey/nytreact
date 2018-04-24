@@ -13,7 +13,7 @@ class Saved extends Component {
         API.getSavedArticles()
         .then(res => {
                 this.setState({
-                    articles: res.data
+                    savedArticles: res.data
                 })
                 console.log(res.data)
                 console.log(this.state.savedArticles)
@@ -46,7 +46,7 @@ class Saved extends Component {
                             key = {index} 
                             article = {article}
                             saveOrDelete = {this.deleteArticle}
-                            delete = "Delete"
+                            buttonText = "Delete"
                             />
                     )
                 })}

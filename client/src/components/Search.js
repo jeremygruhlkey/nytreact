@@ -12,10 +12,7 @@ class Search extends Component {
     };
 
     handleInputChange = event => {
-        console.log(event.target.placeholder)
         const {name, value} = event.target;
-        console.log(event.target)
-        console.log(value)
         this.setState({
             [name]: value
         });
@@ -25,10 +22,19 @@ class Search extends Component {
         event.preventDefault();
         API.findArticles(this.state.topic, this.state.startYear, this.state.endYear)
         .then(res => {
-            this.setState({
-                articles: res.data
+            console.log(res.data)
+            {const articleInfo = res.data.map(data => {
+                return {
+                    headline: data.headline.main,
+                    snippet: data.snippet,
+                    url: data.web_url
+                }
             })
-            console.log(this.state.articles)})
+            this.setState({
+                articles: articleInfo
+            })}
+            // console.log(this.state.articles)
+        })
         .catch(err => console.log(err));
     };
 
@@ -80,7 +86,7 @@ class Search extends Component {
                                     key = {index} 
                                     article = {article}
                                     saveOrDelete = {this.saveArticle}
-                                    save = "Save"
+                                    buttonText = "Save"
                                     />
                             )
                         })}
