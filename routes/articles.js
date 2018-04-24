@@ -2,7 +2,6 @@ const router = require("express").Router();
 const axios = require("axios")
 const path = require("path")
 const articlesController = require("../controllers/articlesController")
-// const articlesController = require("..controllers/articelsController")
 const authKey = "a46da05d03e24597961ee5ca16cace61"
 
 router.get("/api/v1/getarticles/:topic&:startYear&:endYear", (req,res) => {
@@ -15,7 +14,6 @@ router.get("/api/v1/getarticles/:topic&:startYear&:endYear", (req,res) => {
         method: "get",
         url: searchURL
     }).then(function(result){ 
-        // console.log(result.data.response.docs)
         articles = result.data.response.docs
         console.log(articles)
         res.json(articles)
@@ -26,7 +24,6 @@ router.get("/api/v1/getarticles/:topic&:startYear&:endYear", (req,res) => {
 })
 
 router.post("/api/v1/newSaved", (req, res) => {
-    console.log("hey")
     articlesController.newSaved(req, res)
 })
 
@@ -38,8 +35,6 @@ router.get("/api/v1/savedArticles", (req, res) => {
 router.delete("/api/v1/deleteSaved/:id", (req, res) => {
     articlesController.deleteSaved(req, res)
 })
-
-
 
 router.use(function(req, res) {
     res.sendFile(path.join(__dirname, "../client/build/index.html"));

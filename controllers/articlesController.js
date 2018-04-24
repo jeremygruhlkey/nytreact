@@ -2,7 +2,6 @@ const db = require("../models")
 
 module.exports = {
     findSaved: function(req, res ){
-        console.log("getting articles")
         db.Article.find({})
         .then(dbSaved => {
            res.json(dbSaved)
@@ -10,7 +9,6 @@ module.exports = {
     },
 
     newSaved: function(req, res){
-        console.log("saving article")
         db.Article.create(
             {
                 headline: req.body.headline,
@@ -23,8 +21,6 @@ module.exports = {
     },
 
     deleteSaved: function(req, res){
-        console.log("test deleting article")
-        console.log(req.params.id)
         db.Article.deleteOne({
             _id: req.params.id
         }).then(result => {
